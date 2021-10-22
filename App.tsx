@@ -7,7 +7,7 @@ import {
   View,
   Alert,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/AntDesign';
+import Star from './src/components/Star';
 
 const App = () => {
   const [defaultRating, setDefaultRating] = useState(-1);
@@ -38,9 +38,7 @@ const App = () => {
                 key={index}
                 onPress={() => setDefaultRating(item)}
               >
-                <Text>
-                  <Icon name={item <= defaultRating ? 'star' : 'staro'} size={35} color="#7F00FF" />
-                </Text>
+                <Star filled={item <= defaultRating ? true : false} />
               </TouchableOpacity>
             )
           })
