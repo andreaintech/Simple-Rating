@@ -3,18 +3,15 @@ import {
   SafeAreaView,
   StyleSheet,
   Text,
-  Image,
   TouchableOpacity,
   View,
   Alert,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/AntDesign';
 
 const App = () => {
   const [defaultRating, setDefaultRating] = useState(-1);
   const [maxRating, setMaxRating] = useState([0, 1, 2, 3, 4]);
-  const starImgFilled = 'https://github.com/tranhonghan/images/blob/main/star_filled.png?raw=true';
-  const starImgCorner = 'https://github.com/tranhonghan/images/blob/main/star_corner.png?raw=true';
 
   const showAlert = (defaultRating: number) => {
     Alert.alert(
@@ -41,12 +38,9 @@ const App = () => {
                 key={index}
                 onPress={() => setDefaultRating(item)}
               >
-                <Image
-                  style={styles.starStyle}
-                  source={
-                    item <= defaultRating ? { uri: starImgFilled } : { uri: starImgCorner }
-                  }
-                />
+                <Text>
+                  <Icon name={item <= defaultRating ? 'star' : 'staro'} size={35} color="#7F00FF" />
+                </Text>
               </TouchableOpacity>
             )
           })
@@ -87,11 +81,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'row',
     marginTop: 30,
-  },
-  starStyle: {
-    width: 40,
-    height: 40,
-    resizeMode: 'cover',
   },
   buttonStyle: {
     justifyContent: 'center',
